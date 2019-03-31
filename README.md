@@ -25,8 +25,7 @@ This module runs over the 5v5.You can configure it to run over 4v4/3v3..etc As y
 
 
 ## Credits
-* XDev for Reworking and completing the module.
-* Written by Teiby <http://www.teiby.de/>
+* XDev
 * Adjusted by fr4z3n for azerothcore
 
 
