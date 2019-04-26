@@ -31,4 +31,4 @@ This module runs over the 5v5.You can configure it to run over 4v4/3v3..etc As y
 
 
 
-AzerothCore: [repository](https://github.com/azerothcore) - [website](http://azerothcore.org/) - [discord chat community](https://discord.gg/PaqQRkd)
+AzerothCore: [repository](https://github.com/azerothcore) - [website](http://azerothcore.org) - [discord chat community](https://discord.gg/PaqQRkd)

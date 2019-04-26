@@ -11,5 +11,4 @@ if( WIN32 )
     )
   endif()
 endif()
-
 install(FILES "${CMAKE_1V1ARENA_DIR}/conf/1v1arena.conf.dist" DESTINATION ${CONF_DIR})
