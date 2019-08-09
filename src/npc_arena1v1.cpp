@@ -280,8 +280,6 @@ public:
         case 3: // Leave Queue
         {
             uint8 arenaType = ARENA_TYPE_5v5;
-            if (player->InBattlegroundQueueForBattlegroundQueueType(BATTLEGROUND_QUEUE_5v5))
-                arenaType = ARENA_TYPE_5v5;
 
             WorldPacket Data;
             Data << arenaType << (uint8)0x0 << (uint32)BATTLEGROUND_AA << (uint16)0x0 << (uint8)0x0;
