@@ -279,8 +279,10 @@ public:
 
         case 3: // Leave Queue
         {
+            uint8 arenaType = ARENA_TYPE_5v5;
+
             WorldPacket Data;
-            Data << (uint8)0x1 << (uint8)0x0 << (uint32)BATTLEGROUND_AA << (uint16)0x0 << (uint8)0x0;
+            Data << arenaType << (uint8)0x0 << (uint32)BATTLEGROUND_AA << (uint16)0x0 << (uint8)0x0;
             player->GetSession()->HandleBattleFieldPortOpcode(Data);
             player->CLOSE_GOSSIP_MENU();
             return true;
