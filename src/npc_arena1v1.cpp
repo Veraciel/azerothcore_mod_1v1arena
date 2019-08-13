@@ -333,57 +333,8 @@ private:
                 continue;
 
             for (int8 rank = MAX_TALENT_RANK - 1; rank >= 0; --rank)
-            {
                 if (talentInfo->RankID[rank] == 0)
                     continue;
-
-        case 2: // Join Queue Arena (rated)
-        {
-            if (Arena1v1CheckTalents(player) && JoinQueueArena(player, me, true) == false)
-                ChatHandler(player->GetSession()).SendSysMessage("Something went wrong when joining the queue.");
-
-            player->CLOSE_GOSSIP_MENU();
-            return true;
-        }
-        break;
-
-        case 20: // Join Queue Arena (unrated)
-        {
-            if (Arena1v1CheckTalents(player) && JoinQueueArena(player, me, false) == false)
-                ChatHandler(player->GetSession()).SendSysMessage("Something went wrong when joining the queue.");
-
-            player->CLOSE_GOSSIP_MENU();
-            return true;
-        }
-        break;
-
-        case 3: // Leave Queue
-        {
-            uint8 arenaType = ARENA_TYPE_5v5;
-
-            WorldPacket Data;
-            Data << arenaType << (uint8)0x0 << (uint32)BATTLEGROUND_AA << (uint16)0x0 << (uint8)0x0;
-            player->GetSession()->HandleBattleFieldPortOpcode(Data);
-            player->CLOSE_GOSSIP_MENU();
-            return true;
-        }
-        break;
-
-        case 4: // get statistics
-        {
-            ArenaTeam* at = sArenaTeamMgr->GetArenaTeamById(player->GetArenaTeamId(ArenaTeam::GetSlotByType(ARENA_TEAM_5v5)));
-            if (at)
-            {
-                std::stringstream s;
-                s << "Rating: " << at->GetStats().Rating;
-                s << "\nRank: " << at->GetStats().Rank;
-                s << "\nSeason Games: " << at->GetStats().SeasonGames;
-                s << "\nSeason Wins: " << at->GetStats().SeasonWins;
-                s << "\nWeek Games: " << at->GetStats().WeekGames;
-                s << "\nWeek Wins: " << at->GetStats().WeekWins;
-
-                ChatHandler(player->GetSession()).PSendSysMessage(s.str().c_str());
-            }
         }
 
         if (count >= 36)
