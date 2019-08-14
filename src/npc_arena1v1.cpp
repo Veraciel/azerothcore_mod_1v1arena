@@ -18,6 +18,7 @@
 #include "Log.h"
 #include "Player.h"
 #include "ScriptedGossip.h"
+#include "Chat.h"
 
 // TalentTab.dbc -> TalentTabID
 const uint32 FORBIDDEN_TALENTS_IN_1V1_ARENA[] =
