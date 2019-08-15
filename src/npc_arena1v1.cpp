@@ -18,9 +18,10 @@
 #include "Log.h"
 #include "Player.h"
 #include "ScriptedGossip.h"
+#include "Chat.h"
 
 // TalentTab.dbc -> TalentTabID
-const uint32 FORBIDDEN_TALENTS_IN_1V1_ARENA[] =
+/* const uint32 FORBIDDEN_TALENTS_IN_1V1_ARENA[] =
 {
     // Healer
     //201, // PriestDiscipline
@@ -35,7 +36,7 @@ const uint32 FORBIDDEN_TALENTS_IN_1V1_ARENA[] =
 
     0 // End
 };
-
+*/
 class arena1v1announce : public PlayerScript
 {
 public:
