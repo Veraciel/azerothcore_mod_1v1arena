@@ -83,7 +83,7 @@ public:
 
     void OnGetMaxPersonalArenaRatingRequirement(const Player* player, uint32 minslot, uint32& maxArenaRating) const override
     {
-        if (sConfigMgr->GetBoolDefault("Arena1v1.VendorRating", false) && minslot < sConfigMgr->GetIntDefault("Arena1v1.ArenaSlotID", 3))
+        if (sConfigMgr->GetBoolDefault("Arena1v1.VendorRating", false) && minslot < (uint32)sConfigMgr->GetIntDefault("Arena1v1.ArenaSlotID", 3))
         {
             if (ArenaTeam* at = sArenaTeamMgr->GetArenaTeamByCaptain(player->GetGUID(), ARENA_TEAM_1V1))
             {
@@ -265,7 +265,6 @@ private:
             return false;
         }
 
-        BattlegroundTypeId bgTypeId = bg->GetBgTypeID();
         PvPDifficultyEntry const* bracketEntry = GetBattlegroundBracketByLevel(bg->GetMapId(), player->getLevel());
         if (!bracketEntry)
             return false;
