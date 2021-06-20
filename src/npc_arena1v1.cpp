@@ -12,18 +12,22 @@
 #include "DisableMgr.h"
 #include "BattlegroundMgr.h"
 #include "Battleground.h"
+#include "BattlegroundQueue.h"
 #include "ArenaTeam.h"
 #include "Language.h"
 #include "Config.h"
 #include "Log.h"
 #include "Player.h"
 #include "ScriptedGossip.h"
+#include "SharedDefines.h"
 #include "Chat.h"
 
 //Const for 1v1 arena
 constexpr uint32 ARENA_TEAM_1V1 = 1;
 constexpr uint32 ARENA_TYPE_1V1 = 1;
+constexpr uint32 BATTLEGROUND_QUEUE_1V1 = 11;
 constexpr BattlegroundQueueTypeId bgQueueTypeId = (BattlegroundQueueTypeId)((int)BATTLEGROUND_QUEUE_5v5 + 1);
+uint32 ARENA_SLOT_1V1 = 3;
 
 //Config
 std::vector<uint32> forbiddenTalents;
@@ -42,6 +46,14 @@ public:
         {
             forbiddenTalents.push_back(std::stoi(token));
         }
+        ARENA_SLOT_1V1 = sConfigMgr->GetIntDefault("Arena1v1.ArenaSlotID", 3);
+        
+        ArenaTeam::ArenaSlotByType.insert({ ARENA_TEAM_1V1, ARENA_SLOT_1V1 });
+        ArenaTeam::ArenaReqPlayersForType.insert({ ARENA_TYPE_1V1, 2 });
+        
+        BattlegroundMgr::queueToBg.insert({ BATTLEGROUND_QUEUE_1V1,   BATTLEGROUND_AA });
+        BattlegroundMgr::QueueToArenaType.emplace(BATTLEGROUND_QUEUE_1V1, (ArenaType) ARENA_TYPE_1V1);
+        BattlegroundMgr::ArenaTypeToQueue.emplace(ARENA_TYPE_1V1, (BattlegroundQueueTypeId) BATTLEGROUND_QUEUE_1V1);
     }
 
 };
@@ -56,6 +68,7 @@ public:
         if (sConfigMgr->GetBoolDefault("Arena1v1.Announcer", true))
             ChatHandler(pPlayer->GetSession()).SendSysMessage("This server is running the |cff4CFF00Arena 1v1 |rmodule.");
     }
+
 
     void GetCustomGetArenaTeamId(const Player* player, uint8 slot, uint32& id) const override
     {
