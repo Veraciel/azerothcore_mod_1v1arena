@@ -1,6 +1,6 @@
 void AddSC_npc_1v1arena();
 
-void Add1v1ArenaScripts() 
+void Addmod_1v1_arenaScripts() 
 {
     AddSC_npc_1v1arena();
 }
